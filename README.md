@@ -8,6 +8,37 @@ N⁹:production
 
 The context is refreshed when the prompt is rendered, so it follows `sloctl config use-context` and changes made in another terminal. The plugin does not modify your shell configuration or prompt automatically, except that the optional Powerlevel10k integration adds one segment to its in-memory list.
 
+## Examples
+
+These illustrations use sample context names; your prompt layout, fonts, and colors depend on your shell and theme.
+
+**zsh with Powerlevel10k — dark theme**
+
+![Illustrated dark Powerlevel10k prompt with production context](docs/images/powerlevel10k-dark.png)
+
+**zsh with Powerlevel10k — light theme**
+
+![Illustrated light Powerlevel10k prompt with staging context](docs/images/powerlevel10k-light.png)
+
+The light example uses a darker turquoise for contrast, set with `POWERLEVEL9K_SLOCTL_CONTEXT_FOREGROUND='#007d91'`. See [Customization](#customization).
+
+<details>
+<summary>More examples: bash, fish, and Starship</summary>
+
+**bash — dark theme**
+
+![Illustrated bash prompt with production context](docs/images/bash-dark.png)
+
+**fish — light theme**
+
+![Illustrated fish prompt with staging context](docs/images/fish-light.png)
+
+**Starship — dark theme**
+
+![Illustrated Starship prompt with production context](docs/images/starship-dark.png)
+
+</details>
+
 ## What is sloctl?
 
 [sloctl](https://github.com/nobl9/sloctl) is the command-line interface for [Nobl9](https://www.nobl9.com/), a platform for managing service level objectives (SLOs). You can use it to manage Nobl9 resources, such as SLOs, projects, and alert policies, from a terminal or automation. Its configuration contexts let you switch between saved configurations.
