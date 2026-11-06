@@ -104,13 +104,21 @@ Starship owns prompt rendering, so configure its [custom command module](https:/
 command = 'sloctl config current-context 2>/dev/null'
 when = true
 shell = ['sh']
-format = '(N⁹:[$output]($style) )'
-style = 'bold cyan'
+format = '(N[⁹:$output]($style) )'
+style = 'bold #1eb8d1'
 ```
 
 The parentheses make the whole segment conditional on nonempty command output. If you have an explicit top-level `format` or `right_format`, include `${custom.sloctl_context}` at the desired location; remove `$custom` if it would otherwise render the same module twice. Starship's `command_timeout` also applies. This example requires `sh`; on Windows use a shell appropriate to your Starship configuration. Keep Starship's output escaping enabled and use Starship 1.20 or newer; earlier versions did not escape custom command output by default.
 
 ## Customization
+
+The Powerlevel10k segment uses your terminal’s default foreground for `N` and turquoise (`#1eb8d1`), matching the Nobl9 logo, for the rest. The default foreground normally follows your terminal’s light or dark color scheme. To use a different color, set this in `~/.p10k.zsh`:
+
+```zsh
+typeset -g POWERLEVEL9K_SLOCTL_CONTEXT_FOREGROUND=cyan
+```
+
+Powerlevel10k handles color rendering and honors terminal capabilities. The plain bash, zsh, and fish functions print uncolored text so that your prompt or theme can style it. The Starship example sets its own turquoise style.
 
 For bash, zsh, Powerlevel10k, and fish, set `SLOCTL_CONTEXT_PREFIX` and/or `SLOCTL_CONTEXT_SUFFIX` before the prompt is drawn. Empty strings are allowed. The defaults are `N⁹:` and an empty suffix.
 

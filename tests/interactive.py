@@ -2,6 +2,7 @@
 """Exercise real interactive prompts with isolated HOME and a mock sloctl."""
 import os
 import pathlib
+import re
 import select
 import shutil
 import subprocess
@@ -23,8 +24,9 @@ def wait_for(fd, expected, timeout=15):
                 data += os.read(fd, 65536)
             except OSError:
                 break
-            if expected.encode() in data:
-                return
+            visible = re.sub(rb'\x1b\[[0-?]*[ -/]*[@-~]', b'', data)
+            if expected.encode() in visible:
+                return data
     raise AssertionError(f'missing {expected!r} in terminal output {data[-2000:]!r}')
 
 
@@ -43,7 +45,10 @@ def run_prompt(name, executable, arguments, config, env, context_file):
                             stderr=slave, env=env, start_new_session=True, close_fds=True)
     os.close(slave)
     try:
-        wait_for(master, 'N⁹:first')
+        output = wait_for(master, 'N⁹:first')
+        if name == 'powerlevel10k':
+            assert b'\x1b[39mN' in output, 'N should use the terminal default foreground'
+            assert b'\x1b[38;2;30;184;209m' in output, 'segment should use Nobl9 turquoise'
         context_file.write_text('second')
         os.write(master, b'\n')
         wait_for(master, 'N⁹:second')

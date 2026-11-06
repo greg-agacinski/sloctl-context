@@ -46,6 +46,12 @@ zsh -dfc '
     typeset -a POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status)
     source "$P10K_PLUGIN"
     (( ${POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS[(Ie)sloctl_context]} == 0 )) || exit 1
+    p10k() { [[ $1 == segment && $2 == -f && $3 == "#1eb8d1" && $4 == -t && $5 == "%fN%F{#1eb8d1}⁹:test" ]]; }
+    export MOCK_CONTEXT=test
+    prompt_sloctl_context || exit 1
+    SLOCTL_CONTEXT_PREFIX="custom:"
+    p10k() { [[ $5 == "custom:test" ]]; }
+    prompt_sloctl_context || exit 1
 '
 printf 'Bash and zsh checks passed.\n'
 
