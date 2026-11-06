@@ -45,16 +45,16 @@ def run_prompt(name, executable, arguments, config, env, context_file):
                             stderr=slave, env=env, start_new_session=True, close_fds=True)
     os.close(slave)
     try:
-        output = wait_for(master, 'N⁹:first')
+        output = wait_for(master, 'N9:first')
         if name == 'powerlevel10k':
             assert b'\x1b[39mN' in output, 'N should use the terminal default foreground'
             assert b'\x1b[38;2;30;184;209m' in output, 'segment should use Nobl9 turquoise'
         context_file.write_text('second')
         os.write(master, b'\n')
-        wait_for(master, 'N⁹:second')
+        wait_for(master, 'N9:second')
         context_file.write_text('name%F{red}')
         os.write(master, b'\n')
-        wait_for(master, 'N⁹:name%F{red}')
+        wait_for(master, 'N9:name%F{red}')
         print(f'{name}: interactive prompt, refresh and literal percent passed')
     finally:
         proc.terminate()

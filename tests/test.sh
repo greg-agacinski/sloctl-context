@@ -16,9 +16,9 @@ for shell in bash zsh; do
     "$shell" -c '
         source "$PLUGIN"
         export MOCK_CONTEXT=first
-        [ "$(sloctl_context)" = "N⁹:first" ] || exit 1
+        [ "$(sloctl_context)" = "N9:first" ] || exit 1
         MOCK_CONTEXT=second
-        [ "$(sloctl_context)" = "N⁹:second" ] || exit 1
+        [ "$(sloctl_context)" = "N9:second" ] || exit 1
         SLOCTL_CONTEXT_PREFIX="[" SLOCTL_CONTEXT_SUFFIX="]"
         [ "$(sloctl_context)" = "[second]" ] || exit 1
         MOCK_CONTEXT=""
@@ -30,13 +30,13 @@ done
 zsh -c '
     source "$PLUGIN"
     export MOCK_CONTEXT="name%F{red}"
-    [ "$(sloctl_context)" = "N⁹:name%%F{red}" ] || exit 1
+    [ "$(sloctl_context)" = "N9:name%%F{red}" ] || exit 1
 '
 export ZSH_ENTRY="$root/sloctl-context.plugin.zsh"
 zsh -dfc '
     source "$ZSH_ENTRY"
     export MOCK_CONTEXT=loader
-    [[ $(sloctl_context) == "N⁹:loader" ]] || exit 1
+    [[ $(sloctl_context) == "N9:loader" ]] || exit 1
 '
 
 # The Powerlevel10k loader must respect a manually positioned left segment.
@@ -46,7 +46,7 @@ zsh -dfc '
     typeset -a POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status)
     source "$P10K_PLUGIN"
     (( ${POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS[(Ie)sloctl_context]} == 0 )) || exit 1
-    p10k() { [[ $1 == segment && $2 == -f && $3 == "#1eb8d1" && $4 == -t && $5 == "%fN%F{#1eb8d1}⁹:test" ]]; }
+    p10k() { [[ $1 == segment && $2 == -f && $3 == "#1eb8d1" && $4 == -t && $5 == "%fN%F{#1eb8d1}9:test" ]]; }
     export MOCK_CONTEXT=test
     prompt_sloctl_context || exit 1
     SLOCTL_CONTEXT_PREFIX="custom:"
@@ -76,7 +76,7 @@ if [ -r "$p10k_theme" ]; then
         [[ $RPROMPT == *second* ]] || exit 1
         MOCK_CONTEXT=""
         _p9k_precmd
-        [[ $RPROMPT != *N⁹:* ]] || exit 1
+        [[ $RPROMPT != *N9:* ]] || exit 1
     '
     printf 'Powerlevel10k integration passed.\n'
 fi
@@ -86,9 +86,9 @@ if command -v fish >/dev/null 2>&1; then
     fish -c '
         source "$FISH_PLUGIN"
         set -gx MOCK_CONTEXT first
-        test (sloctl_context) = "N⁹:first"; or exit 1
+        test (sloctl_context) = "N9:first"; or exit 1
         set -gx MOCK_CONTEXT second
-        test (sloctl_context) = "N⁹:second"; or exit 1
+        test (sloctl_context) = "N9:second"; or exit 1
         set -g SLOCTL_CONTEXT_PREFIX "["
         set -g SLOCTL_CONTEXT_SUFFIX "]"
         test (sloctl_context) = "[second]"; or exit 1

@@ -5,7 +5,7 @@ function prompt_sloctl_context() {
     local text
     # Use the terminal's default foreground for N, then restore the segment color.
     if (( ! ${+SLOCTL_CONTEXT_PREFIX} )); then
-        local SLOCTL_CONTEXT_PREFIX="%fN%F{${POWERLEVEL9K_SLOCTL_CONTEXT_FOREGROUND:-#1eb8d1}}⁹:"
+        local SLOCTL_CONTEXT_PREFIX="%fN%F{${POWERLEVEL9K_SLOCTL_CONTEXT_FOREGROUND:-#1eb8d1}}9:"
     fi
     text=$(sloctl_context)
     [[ -n $text ]] || return 0

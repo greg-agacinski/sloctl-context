@@ -34,7 +34,7 @@ with tempfile.TemporaryDirectory(prefix='sloctl-starship-test-') as temp:
 
     for name in ('first', 'second'):
         result = render(name)
-        assert f'N⁹:{name}' in result, repr(result)
-    assert 'N⁹:' not in render(''), 'empty context must be hidden'
-    assert 'N⁹:' not in render('first', fail='1'), 'failed command must be hidden'
+        assert f'N9:{name}' in result, repr(result)
+    assert 'N9:' not in render(''), 'empty context must be hidden'
+    assert 'N9:' not in render('first', fail='1'), 'failed command must be hidden'
 print('Starship: module renders, refreshes and hides on failure')

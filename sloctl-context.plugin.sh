@@ -10,5 +10,5 @@ sloctl_context() {
     if [ -n "${ZSH_VERSION-}" ]; then
         context=${context//\%/%%}
     fi
-    printf '%s%s%s' "${SLOCTL_CONTEXT_PREFIX-N⁹:}" "$context" "${SLOCTL_CONTEXT_SUFFIX-}"
+    printf '%s%s%s' "${SLOCTL_CONTEXT_PREFIX-N9:}" "$context" "${SLOCTL_CONTEXT_SUFFIX-}"
 }

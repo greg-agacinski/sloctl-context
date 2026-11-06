@@ -3,7 +3,7 @@
 Show the current [sloctl](https://github.com/nobl9/sloctl) default context in your shell prompt:
 
 ```text
-N⁹:production
+N9:production
 ```
 
 The context is refreshed when the prompt is rendered, so it follows `sloctl config use-context` and changes made in another terminal. The plugin does not modify your shell configuration or prompt automatically, except that the optional Powerlevel10k integration adds one segment to its in-memory list.
@@ -52,7 +52,6 @@ The light example uses a darker turquoise for contrast, set with `POWERLEVEL9K_S
 
 - `sloctl` on your `PATH`, with the `config current-context` command.
 - A clone or downloaded copy of this project in a stable location. In the examples below, replace `/path/to/sloctl-context` with its actual path.
-- A UTF-8 terminal and a font with `⁹` for the default prefix. See [Customization](#customization) for an ASCII alternative.
 
 Clone the repository if you have not already:
 
@@ -144,7 +143,7 @@ Starship owns prompt rendering, so configure its [custom command module](https:/
 command = 'sloctl config current-context 2>/dev/null'
 when = true
 shell = ['sh']
-format = '(N[⁹:$output]($style) )'
+format = '(N[9:$output]($style) )'
 style = 'bold #1eb8d1'
 ```
 
@@ -160,7 +159,7 @@ typeset -g POWERLEVEL9K_SLOCTL_CONTEXT_FOREGROUND=cyan
 
 Powerlevel10k handles color rendering and honors terminal capabilities. The plain bash, zsh, and fish functions print uncolored text so that your prompt or theme can style it. The Starship example sets its own turquoise style.
 
-For bash, zsh, Powerlevel10k, and fish, set `SLOCTL_CONTEXT_PREFIX` and/or `SLOCTL_CONTEXT_SUFFIX` before the prompt is drawn. Empty strings are allowed. The defaults are `N⁹:` and an empty suffix.
+For bash, zsh, Powerlevel10k, and fish, set `SLOCTL_CONTEXT_PREFIX` and/or `SLOCTL_CONTEXT_SUFFIX` before the prompt is drawn. Empty strings are allowed. The defaults are `N9:` and an empty suffix.
 
 ```sh
 # bash or zsh: ASCII example

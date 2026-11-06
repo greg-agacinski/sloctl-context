@@ -36,13 +36,13 @@ for sample in samples {
             dx += text.size(withAttributes:attrs).width
         }
     }
-    let brand = [Piece(text:"N",color:sample.prefixColor), Piece(text:"⁹:",color:sample.accent,bold:sample.style == "starship"), Piece(text:sample.context,color:sample.accent,bold:sample.style == "starship")]
+    let brand = [Piece(text:"N",color:sample.prefixColor), Piece(text:"9:",color:sample.accent,bold:sample.style == "starship"), Piece(text:sample.context,color:sample.accent,bold:sample.style == "starship")]
     let normal = Piece(text:"sloctl config current-context",color:sample.fg)
     if sample.p10k {
         draw([Piece(text:sample.left + " ",color:sample.fg),normal],x:35,y:180)
         draw([Piece(text:sample.context,color:sample.fg)],x:35,y:127)
         draw([Piece(text:sample.left,color:sample.fg)],x:35,y:74)
-        let full = "N⁹:"+sample.context
+        let full = "N9:"+sample.context
         let w = (full as NSString).size(withAttributes:[.font:font]).width
         draw(brand,x:CGFloat(width)-35-w,y:74)
     } else {

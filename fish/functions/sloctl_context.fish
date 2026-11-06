@@ -3,7 +3,7 @@ function sloctl_context --description 'Print the current sloctl context for a pr
     set -l context (command sloctl config current-context 2>/dev/null); or return 0
     test -n "$context"; or return 0
 
-    set -l prefix 'N⁹:'
+    set -l prefix 'N9:'
     set -l suffix ''
     set -q SLOCTL_CONTEXT_PREFIX; and set prefix "$SLOCTL_CONTEXT_PREFIX"
     set -q SLOCTL_CONTEXT_SUFFIX; and set suffix "$SLOCTL_CONTEXT_SUFFIX"
