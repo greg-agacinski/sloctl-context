@@ -87,7 +87,8 @@ if command -v fish >/dev/null 2>&1; then
         set -g SLOCTL_CONTEXT_SUFFIX "]"
         test (sloctl_context) = "[second]"; or exit 1
         set -gx MOCK_FAIL 1
-        test -z "(sloctl_context)"; or exit 1
+        set -l empty_result (sloctl_context)
+        test -z "$empty_result"; or exit 1
     '
     printf 'fish checks passed.\n'
 else

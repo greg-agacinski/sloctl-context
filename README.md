@@ -132,4 +132,4 @@ In fish, use `set -g SLOCTL_CONTEXT_PREFIX 'n9:'`. For Starship, change the modu
 
 ## Tests
 
-Run `bash tests/test.sh`. It uses a mock `sloctl` and checks bash and zsh. Powerlevel10k and fish checks run when those programs are available; `P10K_THEME` can point to a Powerlevel10k theme file. The tests do not access your sloctl configuration. Starship integration requires separate verification with an installed Starship binary.
+Run `bash tests/test.sh`. It uses a mock `sloctl` and checks bash and zsh. Powerlevel10k and fish checks run when those programs are available; `P10K_THEME` can point to a Powerlevel10k theme file. The tests do not access your sloctl configuration. Run `python3 tests/interactive.py` to test interactive bash, zsh, Oh My Zsh and Powerlevel10k prompts in a temporary home directory when available. Run `bash tests/docker-test.sh` to test bash, zsh, fish and Starship in a disposable Alpine container. The first run downloads the image and packages; Docker is required. Oh My Zsh and Powerlevel10k are tested by the interactive script when installed on the host.
