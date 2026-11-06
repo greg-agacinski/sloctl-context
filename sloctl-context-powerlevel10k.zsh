@@ -9,6 +9,7 @@ function prompt_sloctl_context() {
 }
 
 # Avoid adding the segment twice when this file is sourced again.
-if (( ${POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS[(Ie)sloctl_context]} == 0 )); then
+if (( ${POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS[(Ie)sloctl_context]} == 0 &&
+      ${POWERLEVEL9K_LEFT_PROMPT_ELEMENTS[(Ie)sloctl_context]} == 0 )); then
     POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS+=(sloctl_context)
 fi
