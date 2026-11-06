@@ -8,6 +8,15 @@ N⁹:production
 
 The context is refreshed when the prompt is rendered, so it follows `sloctl config use-context` and changes made in another terminal. The plugin does not modify your shell configuration or prompt automatically, except that the optional Powerlevel10k integration adds one segment to its in-memory list.
 
+## What is sloctl?
+
+[sloctl](https://github.com/nobl9/sloctl) is the command-line interface for [Nobl9](https://www.nobl9.com/), a platform for managing service level objectives (SLOs). You can use it to manage Nobl9 resources, such as SLOs, projects, and alert policies, from a terminal or automation. Its configuration contexts let you switch between saved configurations.
+
+- [sloctl source and installation options](https://github.com/nobl9/sloctl)
+- [sloctl user guide](https://docs.nobl9.com/sloctl-user-guide/)
+- [Install sloctl](https://docs.nobl9.com/sloctl-user-guide/install-sloctl/)
+- [Configure sloctl and its contexts](https://docs.nobl9.com/sloctl-user-guide/configure-sloctl/)
+
 ## Requirements
 
 - `sloctl` on your `PATH`, with the `config current-context` command.
